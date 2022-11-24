@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+  	<TargetFrameworks>net7.0</TargetFrameworks>
+    <Platforms>x64</Platforms>
+    <Stage>$(SolutionDir)\Stage</Stage>
+    <OutputPath>$(Stage)\$(Configuration)\</OutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <BaseIntermediateOutputPath>$(Stage)\obj\$(Configuration)\$(Platform)\$(MSBuildProjectFile)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+  </PropertyGroup>
+</Project>
