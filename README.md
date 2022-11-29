@@ -1,4 +1,10 @@
-# Advent of Code 2022 solutions:
+# Advent of Code 2022 solutions
+
+## Usage instructions
+To run this you'll need to provide your session cookie from the Advent of Code website in a file named `session.cookie`, which needs to be present in the same directory as the .exe produced by the build.
+
+The .exe will download the input of the requested day if it's missing.
+
 
 | Day                                        | Title   | C#            |
 |:------------------------------------------:| ------- |:-------------:|
