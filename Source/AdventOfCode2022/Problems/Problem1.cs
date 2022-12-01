@@ -23,38 +23,24 @@ namespace AdventOfCode2022.Problems
             return SolvePartTwo(Input);
         }
 
-        private static IEnumerable<int> ParseInput(IEnumerable<string> input)
+        private static IEnumerable<int> ParseInput(ICollection<string> input)
         {
-            var elvesWithFood = new List<int>();
-            var currentElf = 0;
-
-            foreach (var foodItem in input)
-            {
-                if (elvesWithFood.Count < currentElf + 1)
-                {
-                    elvesWithFood.Add(0);
-                }
-
-                if (string.IsNullOrEmpty(foodItem))
-                {
-                    currentElf++;
-                    continue;
-                }
-
-                elvesWithFood[currentElf] += foodItem.ToInt();
-            }
-
-            return elvesWithFood;
+            return input.SplitByBlankLines()
+                .Select(elf => elf.AsInt().Sum())
+                .ToList();
         }
 
-        internal static int SolvePartOne(IEnumerable<string> input)
+        internal static int SolvePartOne(ICollection<string> input)
         {
             return ParseInput(input).Max();
         }
 
-        internal static int SolvePartTwo(IEnumerable<string> input)
+        internal static int SolvePartTwo(ICollection<string> input)
         {
-            return ParseInput(input).Order().Reverse().Take(3).Sum();
+            return ParseInput(input)
+                .OrderDescending()
+                .Take(3)
+                .Sum();
         }
     }
 }

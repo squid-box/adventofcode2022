@@ -37,4 +37,36 @@ public static class CollectionExtensions
     {
         return input.Where(line => !string.IsNullOrEmpty(line)).ToList();
     }
+
+    /// <summary>
+    /// Returns a collection of grouped strings from the original collection, split by blank lines.
+    /// </summary>
+    /// <param name="input">Input to split.</param>
+    /// <returns>A list of grouped strings from the original collection.</returns>
+    public static IList<IList<string>> SplitByBlankLines(this ICollection<string> input)
+    {
+        var result = new List<IList<string>>();
+
+        var currentList = new List<string>();
+
+        foreach (var line in input)
+        {
+            if (string.IsNullOrEmpty(line))
+            {
+                if (currentList.Count != 0)
+                {
+                    result.Add(currentList);
+                }
+
+                currentList = new List<string>();
+                continue;
+            }
+
+            currentList.Add(line);
+        }
+
+        result.Add(currentList);
+
+        return result;
+    }
 }

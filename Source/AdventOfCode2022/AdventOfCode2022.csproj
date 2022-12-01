@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Problems\" />
     <None Update="session.cookie">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
