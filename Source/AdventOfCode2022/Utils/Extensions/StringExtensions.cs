@@ -38,6 +38,11 @@ public static class StringExtensions
         return Convert.ToInt32(source, 2);
     }
 
+    /// <summary>
+    /// Sorts all characters in a string alphabetically.
+    /// </summary>
+    /// <param name="source">The string to sort.</param>
+    /// <returns>A new string, with all <see cref="char"/>'s sorted.</returns>
     public static string SortAlphabetically(this string source)
     {
         return string.Concat(source.OrderBy(c => c));

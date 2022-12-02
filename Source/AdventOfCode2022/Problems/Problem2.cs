@@ -23,9 +23,9 @@ namespace AdventOfCode2022.Problems
             return SolvePartTwo(Input);
         }
 
-        internal static IList<(char them, char me)> ParseInput(ICollection<string> input)
+        internal static IList<(char Them, char Me)> ParseInput(ICollection<string> input)
         {
-            var result = new List<(char them, char me)>();
+            var result = new List<(char Them, char Me)>();
 
             foreach (var line in input.WithNoEmptyLines())
             {
@@ -40,7 +40,7 @@ namespace AdventOfCode2022.Problems
             var parsed = ParseInput(input);
 
             return parsed
-                .Sum(round => CalculateScore(round.them, round.me));
+                .Sum(round => CalculateScore(round.Them, round.Me));
         }
 
         internal static int SolvePartTwo(ICollection<string> input)
@@ -49,23 +49,23 @@ namespace AdventOfCode2022.Problems
 
             var score = 0;
 
-            foreach (var line in parsed)
+            foreach (var (them, me) in parsed)
             {
-                var myChoice = _resultTable[line.me] switch
+                var myChoice = ResultTable[me] switch
                 {
-                    Outcome.Win => line.them switch
+                    Outcome.Win => them switch
                     {
                         'A' => 'Y',
                         'B' => 'Z',
                         'C' => 'X'
                     },
-                    Outcome.Loss => line.them switch
+                    Outcome.Loss => them switch
                     {
                         'A' => 'Z',
                         'B' => 'X',
                         'C' => 'Y'
                     },
-                    Outcome.Draw => line.them switch
+                    Outcome.Draw => them switch
                     {
                         'A' => 'X',
                         'B' => 'Y',
@@ -74,23 +74,20 @@ namespace AdventOfCode2022.Problems
                     _ => 'A'
                 };
 
-                score += CalculateScore(line.them, myChoice);
+                score += CalculateScore(them, myChoice);
             }
 
             return score;
         }
 
-        private static readonly Dictionary<char, int> _scoreTable = new()
+        private static readonly Dictionary<char, int> ScoreTable = new()
         {
-            { 'A', 1 },
-            { 'B', 2 },
-            { 'C', 3 },
             { 'X', 1 },
             { 'Y', 2 },
             { 'Z', 3 },
         };
 
-        private static readonly Dictionary<char, Outcome> _resultTable = new()
+        private static readonly Dictionary<char, Outcome> ResultTable = new()
         {
             { 'X', Outcome.Loss },
             { 'Y', Outcome.Draw},
@@ -99,7 +96,7 @@ namespace AdventOfCode2022.Problems
 
         private static int CalculateScore(char them, char me)
         {
-            var score = _scoreTable[me];
+            var score = ScoreTable[me];
 
             switch (them)
             {
@@ -119,6 +116,9 @@ namespace AdventOfCode2022.Problems
         }
     }
 
+    /// <summary>
+    /// Possible outcomes from Rock, Paper, Scissors.
+    /// </summary>
     internal enum Outcome
     {
         Win,

@@ -6,7 +6,7 @@ namespace AdventOfCode2022.Tests.Problems
     [TestFixture]
     public class Problem1Tests
     {
-        private readonly string[] _testInput = new[]
+        private readonly string[] _testInput =
         {
             "1000",
             "2000",
