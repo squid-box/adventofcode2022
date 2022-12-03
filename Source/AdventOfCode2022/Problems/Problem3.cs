@@ -36,25 +36,37 @@ namespace AdventOfCode2022.Problems
 
         internal static int SolvePartOne(ICollection<string> input)
         {
-            var score = 0;
-
             var parsed = ParseInput(input);
 
-            foreach (var pair in parsed)
+            return parsed.Sum(pair => FindScore(FindCommonChar(pair.first, pair.second)));
+        }
+
+        internal static int SolvePartTwo(ICollection<string> input)
+        {
+            var score = 0;
+
+            var inputList = input.ToList();
+
+            for (var i = 0; i < input.Count; i += 3)
             {
-                score += FindScore(FindCommonChar(pair.first, pair.second));
+                score += FindScore(FindCommonChar(inputList[i].ToCharArray(), inputList[i + 1].ToCharArray(), inputList[i + 2].ToCharArray()));
             }
 
             return score;
         }
 
-        internal static char FindCommonChar(IList<char> first, IList<char> second)
+        internal static char FindCommonChar(IList<char> first, IList<char> second, IList<char> third = null)
         {
-            for (var i = 0; i < first.Count; i++)
+            foreach (var letter in first)
             {
-                if (second.Contains(first[i]))
+                if (!second.Contains(letter))
                 {
-                    return first[i];
+                    continue;
+                }
+
+                if (third == null || third.Contains(letter))
+                {
+                    return letter;
                 }
             }
 
@@ -71,11 +83,6 @@ namespace AdventOfCode2022.Problems
             {
                 return item - 38;
             }
-        }
-
-        internal static int SolvePartTwo(ICollection<string> input)
-        {
-            return 0;
         }
     }
 }
