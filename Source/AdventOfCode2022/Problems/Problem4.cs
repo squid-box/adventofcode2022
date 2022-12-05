@@ -15,7 +15,6 @@ namespace AdventOfCode2022.Problems
         /// <inheritdoc />
         protected override object SolvePartOne()
         {
-            // 552 too high
             return SolvePartOne(Input);
         }
 
