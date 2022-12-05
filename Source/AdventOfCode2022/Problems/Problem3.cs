@@ -1,88 +1,87 @@
-namespace AdventOfCode2022.Problems
+namespace AdventOfCode2022.Problems;
+
+using System.Collections.Generic;
+using System.Linq;
+
+/// <summary>
+/// Solution for <a href="https://adventofcode.com/2022/day/3">Day 3</a>.
+/// </summary>
+public class Problem3 : ProblemBase
 {
-    using System.Collections.Generic;
-    using System.Linq;
+    public Problem3(InputDownloader inputDownloader) : base(3, inputDownloader) { }
 
-    /// <summary>
-    /// Solution for <a href="https://adventofcode.com/2022/day/3">Day 3</a>.
-    /// </summary>
-    public class Problem3 : ProblemBase
+    /// <inheritdoc />
+    protected override object SolvePartOne()
     {
-        public Problem3(InputDownloader inputDownloader) : base(3, inputDownloader) { }
+        return SolvePartOne(Input);
+    }
 
-        /// <inheritdoc />
-        protected override object SolvePartOne()
+    /// <inheritdoc />
+    protected override object SolvePartTwo()
+    {
+        return SolvePartTwo(Input);
+    }
+
+    internal static IList<(IList<char> first, IList<char> second)> ParseInput(IEnumerable<string> input)
+    {
+        var result = new List<(IList<char>, IList<char>)>();
+
+        foreach (var line in input)
         {
-            return SolvePartOne(Input);
+            result.Add((line.Take(line.Length / 2).ToList(), line.Skip(line.Length / 2).ToList()));
         }
 
-        /// <inheritdoc />
-        protected override object SolvePartTwo()
+        return result;
+    }
+
+    internal static int SolvePartOne(ICollection<string> input)
+    {
+        var parsed = ParseInput(input);
+
+        return parsed.Sum(pair => FindScore(FindCommonChar(pair.first, pair.second)));
+    }
+
+    internal static int SolvePartTwo(ICollection<string> input)
+    {
+        var score = 0;
+
+        var inputList = input.ToList();
+
+        for (var i = 0; i < input.Count; i += 3)
         {
-            return SolvePartTwo(Input);
+            score += FindScore(FindCommonChar(inputList[i].ToCharArray(), inputList[i + 1].ToCharArray(), inputList[i + 2].ToCharArray()));
         }
 
-        internal static IList<(IList<char> first, IList<char> second)> ParseInput(IEnumerable<string> input)
-        {
-            var result = new List<(IList<char>, IList<char>)>();
+        return score;
+    }
 
-            foreach (var line in input)
+    internal static char FindCommonChar(IList<char> first, IList<char> second, IList<char> third = null)
+    {
+        foreach (var letter in first)
+        {
+            if (!second.Contains(letter))
             {
-                result.Add((line.Take(line.Length / 2).ToList(), line.Skip(line.Length / 2).ToList()));
+                continue;
             }
 
-            return result;
+            if (third == null || third.Contains(letter))
+            {
+                return letter;
+            }
         }
 
-        internal static int SolvePartOne(ICollection<string> input)
-        {
-            var parsed = ParseInput(input);
+        return '\0';
+    }
 
-            return parsed.Sum(pair => FindScore(FindCommonChar(pair.first, pair.second)));
+    internal static int FindScore(char item)
+    {
+        if (char.IsLower(item))
+        {
+            return item - 96;
         }
-
-        internal static int SolvePartTwo(ICollection<string> input)
+        else
         {
-            var score = 0;
-
-            var inputList = input.ToList();
-
-            for (var i = 0; i < input.Count; i += 3)
-            {
-                score += FindScore(FindCommonChar(inputList[i].ToCharArray(), inputList[i + 1].ToCharArray(), inputList[i + 2].ToCharArray()));
-            }
-
-            return score;
-        }
-
-        internal static char FindCommonChar(IList<char> first, IList<char> second, IList<char> third = null)
-        {
-            foreach (var letter in first)
-            {
-                if (!second.Contains(letter))
-                {
-                    continue;
-                }
-
-                if (third == null || third.Contains(letter))
-                {
-                    return letter;
-                }
-            }
-
-            return '\0';
-        }
-
-        internal static int FindScore(char item)
-        {
-            if (char.IsLower(item))
-            {
-                return item - 96;
-            }
-            else
-            {
-                return item - 38;
-            }
+            return item - 38;
         }
     }
 }

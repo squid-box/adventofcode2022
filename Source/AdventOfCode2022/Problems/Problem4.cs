@@ -1,78 +1,77 @@
-namespace AdventOfCode2022.Problems
+namespace AdventOfCode2022.Problems;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using AdventOfCode2022.Utils.Extensions;
+
+/// <summary>
+/// Solution for <a href="https://adventofcode.com/2022/day/4">Day 4</a>.
+/// </summary>
+public class Problem4 : ProblemBase
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using AdventOfCode2022.Utils.Extensions;
+    public Problem4(InputDownloader inputDownloader) : base(4, inputDownloader) { }
 
-    /// <summary>
-    /// Solution for <a href="https://adventofcode.com/2022/day/4">Day 4</a>.
-    /// </summary>
-    public class Problem4 : ProblemBase
+    /// <inheritdoc />
+    protected override object SolvePartOne()
     {
-        public Problem4(InputDownloader inputDownloader) : base(4, inputDownloader) { }
+        return SolvePartOne(Input);
+    }
 
-        /// <inheritdoc />
-        protected override object SolvePartOne()
+    /// <inheritdoc />
+    protected override object SolvePartTwo()
+    {
+        return SolvePartTwo(Input);
+    }
+
+    internal static int SolvePartOne(ICollection<string> input)
+    {
+        var numberOfFullOverlaps = 0;
+
+        foreach (var line in input.WithNoEmptyLines())
         {
-            return SolvePartOne(Input);
-        }
+            var sections = line.Split(',');
+            var firstRangeStart = Convert.ToInt32(sections[0].Split('-')[0]);
+            var firstRangeEnd = Convert.ToInt32(sections[0].Split('-')[1]);
 
-        /// <inheritdoc />
-        protected override object SolvePartTwo()
-        {
-            return SolvePartTwo(Input);
-        }
+            var secondRangeStart = Convert.ToInt32(sections[1].Split('-')[0]);
+            var secondRangeEnd = Convert.ToInt32(sections[1].Split('-')[1]);
 
-        internal static int SolvePartOne(ICollection<string> input)
-        {
-            var numberOfFullOverlaps = 0;
+            var first = Enumerable.Range(firstRangeStart, firstRangeEnd - firstRangeStart + 1);
+            var second = Enumerable.Range(secondRangeStart, secondRangeEnd - secondRangeStart + 1);
 
-            foreach (var line in input.WithNoEmptyLines())
+            if (first.Intersect(second).Count() == second.Count() ||
+                second.Intersect(first).Count() == first.Count())
             {
-                var sections = line.Split(',');
-                var firstRangeStart = Convert.ToInt32(sections[0].Split('-')[0]);
-                var firstRangeEnd = Convert.ToInt32(sections[0].Split('-')[1]);
-
-                var secondRangeStart = Convert.ToInt32(sections[1].Split('-')[0]);
-                var secondRangeEnd = Convert.ToInt32(sections[1].Split('-')[1]);
-
-                var first = Enumerable.Range(firstRangeStart, firstRangeEnd - firstRangeStart + 1);
-                var second = Enumerable.Range(secondRangeStart, secondRangeEnd - secondRangeStart + 1);
-
-                if (first.Intersect(second).Count() == second.Count() ||
-                    second.Intersect(first).Count() == first.Count())
-                {
-                    numberOfFullOverlaps++;
-                }
+                numberOfFullOverlaps++;
             }
-
-            return numberOfFullOverlaps;
         }
 
-        internal static int SolvePartTwo(ICollection<string> input)
+        return numberOfFullOverlaps;
+    }
+
+    internal static int SolvePartTwo(ICollection<string> input)
+    {
+        var numberOfFullOverlaps = 0;
+
+        foreach (var line in input.WithNoEmptyLines())
         {
-            var numberOfFullOverlaps = 0;
+            var sections = line.Split(',');
+            var firstRangeStart = Convert.ToInt32(sections[0].Split('-')[0]);
+            var firstRangeEnd = Convert.ToInt32(sections[0].Split('-')[1]);
 
-            foreach (var line in input.WithNoEmptyLines())
+            var secondRangeStart = Convert.ToInt32(sections[1].Split('-')[0]);
+            var secondRangeEnd = Convert.ToInt32(sections[1].Split('-')[1]);
+
+            var first = Enumerable.Range(firstRangeStart, firstRangeEnd - firstRangeStart + 1);
+            var second = Enumerable.Range(secondRangeStart, secondRangeEnd - secondRangeStart + 1);
+
+            if (first.Intersect(second).Any())
             {
-                var sections = line.Split(',');
-                var firstRangeStart = Convert.ToInt32(sections[0].Split('-')[0]);
-                var firstRangeEnd = Convert.ToInt32(sections[0].Split('-')[1]);
-
-                var secondRangeStart = Convert.ToInt32(sections[1].Split('-')[0]);
-                var secondRangeEnd = Convert.ToInt32(sections[1].Split('-')[1]);
-
-                var first = Enumerable.Range(firstRangeStart, firstRangeEnd - firstRangeStart + 1);
-                var second = Enumerable.Range(secondRangeStart, secondRangeEnd - secondRangeStart + 1);
-
-                if (first.Intersect(second).Any())
-                {
-                    numberOfFullOverlaps++;
-                }
+                numberOfFullOverlaps++;
             }
-
-            return numberOfFullOverlaps;
         }
+
+        return numberOfFullOverlaps;
     }
 }

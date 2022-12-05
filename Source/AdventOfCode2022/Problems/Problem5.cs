@@ -1,136 +1,159 @@
-namespace AdventOfCode2022.Problems
+namespace AdventOfCode2022.Problems;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using AdventOfCode2022.Utils.Extensions;
+
+/// <summary>
+/// Solution for <a href="https://adventofcode.com/2022/day/5">Day 5</a>.
+/// </summary>
+public class Problem5 : ProblemBase
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using AdventOfCode2022.Utils.Extensions;
+    public Problem5(InputDownloader inputDownloader) : base(5, inputDownloader) { }
+
+    /// <inheritdoc />
+    protected override object SolvePartOne()
+    {
+        return SolvePartOne(Input);
+    }
+
+    /// <inheritdoc />
+    protected override object SolvePartTwo()
+    {
+        return SolvePartTwo(Input);
+    }
+
+    internal static string SolvePartOne(ICollection<string> input)
+    {
+        var groupedInput = input.SplitByBlankLines();
+        var cargoYard = new CargoYard(groupedInput[0]);
+
+        foreach (var instruction in ParseInstructions(groupedInput[1]))
+        {
+            cargoYard.MoveCrateByCrate(instruction);
+        }
+
+        return cargoYard.TopCrates;
+    }
+
+    internal static string SolvePartTwo(ICollection<string> input)
+    {
+        var groupedInput = input.SplitByBlankLines();
+        var cargoYard = new CargoYard(groupedInput[0]);
+
+        foreach (var instruction in ParseInstructions(groupedInput[1]))
+        {
+            cargoYard.MoveSeveralCrates(instruction);
+        }
+
+        return cargoYard.TopCrates;
+    }
+
+    private static IEnumerable<Instruction> ParseInstructions(IEnumerable<string> input)
+    {
+        return input.Select(line => new Instruction(line)).ToList();
+    }
 
     /// <summary>
-    /// Solution for <a href="https://adventofcode.com/2022/day/5">Day 5</a>.
+    /// Represents a yard with stacks of cargo.
     /// </summary>
-    public class Problem5 : ProblemBase
+    private class CargoYard
     {
-        public Problem5(InputDownloader inputDownloader) : base(5, inputDownloader) { }
+        private readonly List<Stack<char>> _stacks;
 
-        /// <inheritdoc />
-        protected override object SolvePartOne()
+        /// <summary>
+        /// Creates a new <see cref="CargoYard"/>.
+        /// </summary>
+        /// <param name="input">Input on the initial state of the <see cref="CargoYard"/>.</param>
+        public CargoYard(ICollection<string> input)
         {
-            return SolvePartOne(Input);
-        }
-
-        /// <inheritdoc />
-        protected override object SolvePartTwo()
-        {
-            return SolvePartTwo(Input);
-        }
-
-        internal static string SolvePartOne(ICollection<string> input)
-        {
-            var groupedInput = input.SplitByBlankLines();
-            var columns = Convert.ToInt32(groupedInput[0].Last().Trim().Split(' ').Last());
-
-            var initialState = new List<List<char>>(columns);
+            var columns = Convert.ToInt32(input.Last().Trim().Split(' ').Last());
+            _stacks = new List<Stack<char>>();
 
             for (var i = 0; i < columns; i++)
             {
-                initialState.Add(new List<char>());
+                _stacks.Add(new Stack<char>());
             }
 
-            foreach (var row in groupedInput[0])
+            // Read input in reverse to generate the stacks and skip line with stack numbers.
+            foreach (var row in input.SkipLast(1).Reverse())
             {
-                if (char.IsDigit(row[1]))
-                {
-                    continue;
-                }
-
                 for (var col = 0; col < columns; col++)
                 {
                     var index = 1 + col * 4;
                     if (!row[index].Equals(' '))
                     {
-                        initialState[col].Insert(0, row[index]);
+                        _stacks[col].Push(row[index]);
                     }
                 }
             }
-
-            var regex = new Regex(@"move (?<number>\d+) from (?<source>\d+) to (?<destination>\d+)", RegexOptions.ExplicitCapture);
-
-            foreach (var instruction in groupedInput[1])
-            {
-                var match = regex.Match(instruction);
-
-                var number = Convert.ToInt32(match.Groups["number"].Value);
-                var source = Convert.ToInt32(match.Groups["source"].Value) - 1;
-                var destination = Convert.ToInt32(match.Groups["destination"].Value) - 1;
-
-                var toMove = initialState[source].TakeLast(number).Reverse();
-                initialState[destination].AddRange(toMove);
-                initialState[source].RemoveRange(initialState[source].Count - number, number);
-            }
-
-            var topWord = "";
-
-            foreach (var stack in initialState)
-            {
-                topWord += stack.Last();
-            }
-
-            return topWord;
         }
 
-        internal static string SolvePartTwo(ICollection<string> input)
+        /// <summary>
+        /// Moves several crates one at a time.
+        /// </summary>
+        /// <param name="instruction">Instruction on how to move the crates.</param>
+        public void MoveCrateByCrate(Instruction instruction)
         {
-            var groupedInput = input.SplitByBlankLines();
-            var columns = Convert.ToInt32(groupedInput[0].Last().Trim().Split(' ').Last());
-
-            var initialState = new List<List<char>>(columns);
-
-            for (var i = 0; i < columns; i++)
+            for (var n = 0; n < instruction.NumberOfCrates; n++)
             {
-                initialState.Add(new List<char>());
+                _stacks[instruction.DestinationStack].Push(_stacks[instruction.SourceStack].Pop());
             }
-
-            foreach (var row in groupedInput[0])
-            {
-                if (char.IsDigit(row[1]))
-                {
-                    continue;
-                }
-
-                for (var col = 0; col < columns; col++)
-                {
-                    var index = 1 + col * 4;
-                    if (!row[index].Equals(' '))
-                    {
-                        initialState[col].Insert(0, row[index]);
-                    }
-                }
-            }
-
-            var regex = new Regex(@"move (?<number>\d+) from (?<source>\d+) to (?<destination>\d+)", RegexOptions.ExplicitCapture);
-
-            foreach (var instruction in groupedInput[1])
-            {
-                var match = regex.Match(instruction);
-
-                var number = Convert.ToInt32(match.Groups["number"].Value);
-                var source = Convert.ToInt32(match.Groups["source"].Value) - 1;
-                var destination = Convert.ToInt32(match.Groups["destination"].Value) - 1;
-
-                var toMove = initialState[source].TakeLast(number);
-                initialState[destination].AddRange(toMove);
-                initialState[source].RemoveRange(initialState[source].Count - number, number);
-            }
-
-            var topWord = "";
-
-            foreach (var stack in initialState)
-            {
-                topWord += stack.Last();
-            }
-
-            return topWord;
         }
+
+        /// <summary>
+        /// Moves several crates at once.
+        /// </summary>
+        /// <param name="instruction">Instruction on how to move the crates.</param>
+        public void MoveSeveralCrates(Instruction instruction)
+        {
+            var transport = _stacks[instruction.SourceStack].PopRange(instruction.NumberOfCrates);
+
+            // We need to reverse these crates to maintain their order.
+            transport = transport.Reverse();
+
+            _stacks[instruction.DestinationStack].PushRange(transport);
+        }
+
+        /// <summary>
+        /// Gets the top crates of all stacks in the <see cref="CargoYard"/>.
+        /// </summary>
+        public string TopCrates => string.Join(null, _stacks.Select(stack => stack.Peek()));
+    }
+
+    /// <summary>
+    /// Represents a cargo transfer instruction.
+    /// </summary>
+    private readonly struct Instruction
+    {
+        /// <summary>
+        /// Creates a new <see cref="Instruction"/> from given input.
+        /// </summary>
+        /// <param name="input">Input to parse into an <see cref="Instruction"/>.</param>
+        public Instruction(string input)
+        {
+            var match = Regex.Match(input, @"move (?<number>\d+) from (?<source>\d+) to (?<destination>\d+)", RegexOptions.ExplicitCapture);
+
+            NumberOfCrates = Convert.ToInt32(match.Groups["number"].Value);
+            SourceStack = Convert.ToInt32(match.Groups["source"].Value) - 1;
+            DestinationStack = Convert.ToInt32(match.Groups["destination"].Value) - 1;
+        }
+
+        /// <summary>
+        /// The number of crates to move.
+        /// </summary>
+        public int NumberOfCrates { get; }
+
+        /// <summary>
+        /// The stack index to move crate(s) from.
+        /// </summary>
+        public int SourceStack { get; }
+
+        /// <summary>
+        /// The stack index to move crate(s) to.
+        /// </summary>
+        public int DestinationStack { get; }
     }
 }
