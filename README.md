@@ -13,7 +13,7 @@ The .exe will download the input of the requested day if it's missing.
 |  [3](https://adventofcode.com/2022/day/3)  | Rucksack Reorganization | :star: :star: |
 |  [4](https://adventofcode.com/2022/day/4)  | Camp Cleanup            | :star: :star: |
 |  [5](https://adventofcode.com/2022/day/5)  | Supply Stacks           | :star: :star: |
-|  [6](https://adventofcode.com/2022/day/6)  | Unknown                 |               |
+|  [6](https://adventofcode.com/2022/day/6)  | Tuning Trouble          | :star: :star: |
 |  [7](https://adventofcode.com/2022/day/7)  | Unknown                 |               |
 |  [8](https://adventofcode.com/2022/day/8)  | Unknown                 |               |
 |  [9](https://adventofcode.com/2022/day/9)  | Unknown                 |               |
