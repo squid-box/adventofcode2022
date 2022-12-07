@@ -6,5 +6,8 @@ using NUnit.Framework;
 [TestFixture]
 public class Problem19Tests
 {
+    private readonly string[] _testInput =
+    {
 
+    };
 }

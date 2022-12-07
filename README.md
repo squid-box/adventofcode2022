@@ -14,7 +14,7 @@ The .exe will download the input of the requested day if it's missing.
 |  [4](https://adventofcode.com/2022/day/4)  | Camp Cleanup            | :star: :star: |
 |  [5](https://adventofcode.com/2022/day/5)  | Supply Stacks           | :star: :star: |
 |  [6](https://adventofcode.com/2022/day/6)  | Tuning Trouble          | :star: :star: |
-|  [7](https://adventofcode.com/2022/day/7)  | Unknown                 |               |
+|  [7](https://adventofcode.com/2022/day/7)  | No Space Left On Device | :star: :star: |
 |  [8](https://adventofcode.com/2022/day/8)  | Unknown                 |               |
 |  [9](https://adventofcode.com/2022/day/9)  | Unknown                 |               |
 | [10](https://adventofcode.com/2022/day/10) | Unknown                 |               |
