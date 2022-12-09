@@ -1,5 +1,7 @@
 ﻿namespace AdventOfCode2022.Utils;
 
+using System;
+
 public class Vector
 {
     /// <summary>
@@ -29,6 +31,11 @@ public class Vector
         Z = z;
         W = w;
     }
+
+    /// <summary>
+    /// Returns the magnitude of this Vector.
+    /// </summary>
+    public double Magnitude => Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2) + Math.Pow(W, 2));
 
     /// <summary>
     /// Adds the components of two <see cref="Vector"/>s.

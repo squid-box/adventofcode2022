@@ -93,4 +93,9 @@ public class Coordinate : IComparable
     {
         return new Coordinate(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
     }
+
+    public static Vector operator -(Coordinate a, Coordinate b)
+    {
+        return new Vector(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
+    }
 }
