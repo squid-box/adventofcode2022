@@ -17,7 +17,7 @@ The .exe will download the input of the requested day if it's missing.
 |  [7](https://adventofcode.com/2022/day/7)  | No Space Left On Device | :star: :star: |
 |  [8](https://adventofcode.com/2022/day/8)  | Treetop Tree House      | :star: :star: |
 |  [9](https://adventofcode.com/2022/day/9)  | Rope Bridge             | :star: :star: |
-| [10](https://adventofcode.com/2022/day/10) | Unknown                 |               |
+| [10](https://adventofcode.com/2022/day/10) | Cathode-Ray Tube        | :star: :star: |
 | [11](https://adventofcode.com/2022/day/11) | Unknown                 |               |
 | [12](https://adventofcode.com/2022/day/12) | Unknown                 |               |
 | [13](https://adventofcode.com/2022/day/13) | Unknown                 |               |
