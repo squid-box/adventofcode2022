@@ -167,13 +167,13 @@ public class Problem10Tests
     [Test]
     public void TestPartTwo()
     {
-        var expectedOutput = Environment.NewLine +
+        var expectedOutput =
             "##..##..##..##..##..##..##..##..##..##.." + Environment.NewLine +
             "###...###...###...###...###...###...###." + Environment.NewLine +
             "####....####....####....####....####...." + Environment.NewLine +
             "#####.....#####.....#####.....#####....." + Environment.NewLine +
             "######......######......######......####" + Environment.NewLine +
-            "#######.......#######.......#######....." + Environment.NewLine;
+            "#######.......#######.......#######.....";
 
         Assert.AreEqual(expectedOutput, Problem10.SolvePartTwo(_testInput));
     }

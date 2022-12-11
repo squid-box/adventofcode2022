@@ -21,7 +21,7 @@ public class Problem10 : ProblemBase
     /// <inheritdoc />
     protected override object SolvePartTwo()
     {
-        return SolvePartTwo(Input);
+        return Environment.NewLine + SolvePartTwo(Input) + Environment.NewLine;
     }
 
     internal static int SolvePartOne(ICollection<string> input)
@@ -51,7 +51,7 @@ public class Problem10 : ProblemBase
             cpu.ExecuteInstruction(line);
         }
 
-        return Environment.NewLine + crt + Environment.NewLine;
+        return crt.ToString();
     }
 
     private class Cpu
