@@ -24,19 +24,25 @@ public class Coordinate : IComparable
 
     public int W { get; }
 
-    public IList<Coordinate> GetNeighbours()
+    public IList<Coordinate> GetNeighbors(bool includeDiagonals = true)
     {
-        return new List<Coordinate>
+        var neighbors = new List<Coordinate>
         {
             this + Vector.North,
             this + Vector.South,
             this + Vector.West,
             this + Vector.East,
-            this + Vector.North + Vector.East,
-            this + Vector.North + Vector.West,
-            this + Vector.South + Vector.East,
-            this + Vector.South + Vector.West
         };
+
+        if (includeDiagonals)
+        {
+            neighbors.Add(this + Vector.North + Vector.East);
+            neighbors.Add(this + Vector.North + Vector.West);
+            neighbors.Add(this + Vector.South + Vector.East);
+            neighbors.Add(this + Vector.South + Vector.West);
+        }
+
+        return neighbors;
     }
 
     public override string ToString()

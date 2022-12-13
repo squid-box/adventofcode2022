@@ -19,8 +19,8 @@ The .exe will download the input of the requested day if it's missing.
 |  [9](https://adventofcode.com/2022/day/9)  | Rope Bridge             | :star: :star: |
 | [10](https://adventofcode.com/2022/day/10) | Cathode-Ray Tube        | :star: :star: |
 | [11](https://adventofcode.com/2022/day/11) | Monkey in the Middle    | :star: :star: |
-| [12](https://adventofcode.com/2022/day/12) | Unknown                 |               |
-| [13](https://adventofcode.com/2022/day/13) | Unknown                 |               |
+| [12](https://adventofcode.com/2022/day/12) | Hill Climbing Algorithm | :star: :star: |
+| [13](https://adventofcode.com/2022/day/13) | Distress Signal         |               |
 | [14](https://adventofcode.com/2022/day/14) | Unknown                 |               |
 | [15](https://adventofcode.com/2022/day/15) | Unknown                 |               |
 | [16](https://adventofcode.com/2022/day/16) | Unknown                 |               |
