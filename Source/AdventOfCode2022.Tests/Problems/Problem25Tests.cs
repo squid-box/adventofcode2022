@@ -10,4 +10,16 @@ public class Problem25Tests
     {
 
     };
+
+    [Test]
+    public void TestPartOne()
+    {
+        Assert.AreEqual(-1, Problem25.SolvePartOne(_testInput));
+    }
+
+    [Test]
+    public void TestPartTwo()
+    {
+        Assert.AreEqual(-1, Problem25.SolvePartTwo(_testInput));
+    }
 }
