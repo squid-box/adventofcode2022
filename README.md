@@ -22,7 +22,7 @@ The .exe will download the input of the requested day if it's missing.
 | [12](https://adventofcode.com/2022/day/12) | Hill Climbing Algorithm | :star: :star: |
 | [13](https://adventofcode.com/2022/day/13) | Distress Signal         |               |
 | [14](https://adventofcode.com/2022/day/14) | Regolith Reservoir      | :star: :star: |
-| [15](https://adventofcode.com/2022/day/15) | Unknown                 |               |
+| [15](https://adventofcode.com/2022/day/15) | Beacon Exclusion Zone   |               |
 | [16](https://adventofcode.com/2022/day/16) | Unknown                 |               |
 | [17](https://adventofcode.com/2022/day/17) | Unknown                 |               |
 | [18](https://adventofcode.com/2022/day/18) | Unknown                 |               |
