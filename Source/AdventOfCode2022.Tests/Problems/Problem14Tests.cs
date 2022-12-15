@@ -21,6 +21,6 @@ public class Problem14Tests
     [Test]
     public void TestPartTwo()
     {
-        Assert.AreEqual(-1, Problem14.SolvePartTwo(_testInput));
+        Assert.AreEqual(93, Problem14.SolvePartTwo(_testInput));
     }
 }
