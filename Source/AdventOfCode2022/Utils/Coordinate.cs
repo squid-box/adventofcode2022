@@ -45,6 +45,19 @@ public class Coordinate : IComparable
         return neighbors;
     }
 
+    public IList<Coordinate> GetCubeNeighbors()
+    {
+        return new List<Coordinate>
+        {
+            this + Vector.North,
+            this + Vector.South,
+            this + Vector.West,
+            this + Vector.East,
+            this + Vector.Up,
+            this + Vector.Down
+        };
+    }
+
     public override string ToString()
     {
         return $"({X},{Y},{Z},{W})";

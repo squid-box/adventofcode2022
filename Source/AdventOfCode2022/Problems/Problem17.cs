@@ -30,4 +30,22 @@ public class Problem17 : ProblemBase
     {
         return 0;
     }
+
+    private class Chamber
+    {
+        public Chamber()
+        {
+            Width = 7;
+            TopHeight = 0;
+        }
+
+        public int Width { get; }
+
+        public int TopHeight { get; }
+    }
+
+    private class Rock
+    {
+
+    }
 }

@@ -8,13 +8,13 @@ public class Problem17Tests
 {
     private readonly string[] _testInput =
     {
-
+        ">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>"
     };
 
     [Test]
     public void TestPartOne()
     {
-        Assert.AreEqual(-1, Problem17.SolvePartOne(_testInput));
+        Assert.AreEqual(3068, Problem17.SolvePartOne(_testInput));
     }
 
     [Test]

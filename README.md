@@ -23,9 +23,9 @@ The .exe will download the input of the requested day if it's missing.
 | [13](https://adventofcode.com/2022/day/13) | Distress Signal         |               |
 | [14](https://adventofcode.com/2022/day/14) | Regolith Reservoir      | :star: :star: |
 | [15](https://adventofcode.com/2022/day/15) | Beacon Exclusion Zone   |               |
-| [16](https://adventofcode.com/2022/day/16) | Unknown                 |               |
-| [17](https://adventofcode.com/2022/day/17) | Unknown                 |               |
-| [18](https://adventofcode.com/2022/day/18) | Unknown                 |               |
+| [16](https://adventofcode.com/2022/day/16) | Proboscidea Volcanium   |               |
+| [17](https://adventofcode.com/2022/day/17) | Pyroclastic Flow        |               |
+| [18](https://adventofcode.com/2022/day/18) | Boiling Boulders        | :star: :star: |
 | [19](https://adventofcode.com/2022/day/19) | Unknown                 |               |
 | [20](https://adventofcode.com/2022/day/20) | Unknown                 |               |
 | [21](https://adventofcode.com/2022/day/21) | Unknown                 |               |
