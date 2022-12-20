@@ -8,13 +8,26 @@ public class Problem22Tests
 {
     private readonly string[] _testInput =
     {
-
+        "        ...#",
+        "        .#..",
+        "        #...",
+        "        ....",
+        "...#.......#",
+        "........#...",
+        "..#....#....",
+        "..........#.",
+        "        ...#....",
+        "        .....#..",
+        "        .#......",
+        "        ......#.",
+        "",
+        "10R5L5R10L4R5L5"
     };
 
     [Test]
     public void TestPartOne()
     {
-        Assert.AreEqual(-1, Problem22.SolvePartOne(_testInput));
+        Assert.AreEqual(6032, Problem22.SolvePartOne(_testInput));
     }
 
     [Test]

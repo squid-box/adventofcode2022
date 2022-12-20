@@ -8,13 +8,19 @@ public class Problem20Tests
 {
     private readonly string[] _testInput =
     {
-
+        "1",
+        "2",
+        "-3",
+        "3",
+        "-2",
+        "0",
+        "4"
     };
 
     [Test]
     public void TestPartOne()
     {
-        Assert.AreEqual(-1, Problem20.SolvePartOne(_testInput));
+        Assert.AreEqual(3, Problem20.SolvePartOne(_testInput));
     }
 
     [Test]
