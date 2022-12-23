@@ -30,6 +30,6 @@ The .exe will download the input of the requested day if it's missing.
 | [20](https://adventofcode.com/2022/day/20) | Grove Positioning System |               |
 | [21](https://adventofcode.com/2022/day/21) | Monkey Math              |               |
 | [22](https://adventofcode.com/2022/day/22) | Monkey Map               |               |
-| [23](https://adventofcode.com/2022/day/23) | Unknown                  |               |
+| [23](https://adventofcode.com/2022/day/23) | Unstable Diffusion       | :star: :star: |
 | [24](https://adventofcode.com/2022/day/24) | Unknown                  |               |
 | [25](https://adventofcode.com/2022/day/25) | Unknown                  |               |
