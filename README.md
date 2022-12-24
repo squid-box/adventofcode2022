@@ -27,7 +27,7 @@ The .exe will download the input of the requested day if it's missing.
 | [17](https://adventofcode.com/2022/day/17) | Pyroclastic Flow         |               |
 | [18](https://adventofcode.com/2022/day/18) | Boiling Boulders         | :star: :star: |
 | [19](https://adventofcode.com/2022/day/19) | Not Enough Minerals      |               |
-| [20](https://adventofcode.com/2022/day/20) | Grove Positioning System |               |
+| [20](https://adventofcode.com/2022/day/20) | Grove Positioning System | :star:        |
 | [21](https://adventofcode.com/2022/day/21) | Monkey Math              |               |
 | [22](https://adventofcode.com/2022/day/22) | Monkey Map               |               |
 | [23](https://adventofcode.com/2022/day/23) | Unstable Diffusion       | :star: :star: |

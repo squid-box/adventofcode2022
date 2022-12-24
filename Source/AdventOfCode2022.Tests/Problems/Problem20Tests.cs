@@ -26,6 +26,6 @@ public class Problem20Tests
     [Test]
     public void TestPartTwo()
     {
-        Assert.AreEqual(-1, Problem20.SolvePartTwo(_testInput));
+        Assert.AreEqual(1623178306, Problem20.SolvePartTwo(_testInput));
     }
 }
