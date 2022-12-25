@@ -98,12 +98,12 @@ public class Vector
     /// <summary>
     /// Gets a vector representing moving one step north.
     /// </summary>
-    public static Vector North => new(0, 1);
+    public static Vector North => new(0, -1);
 
     /// <summary>
     /// Gets a vector representing moving one step south.
     /// </summary>
-    public static Vector South => new(0, -1);
+    public static Vector South => new(0, 1);
 
     /// <summary>
     /// Gets a vector representing moving one step west.

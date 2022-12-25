@@ -65,8 +65,8 @@ public class Problem23 : ProblemBase
 
         var directionStack = new List<Vector>
         {
-            Vector.South,
             Vector.North,
+            Vector.South,
             Vector.West,
             Vector.East
         };
@@ -171,8 +171,8 @@ public class Problem23 : ProblemBase
 
         var directionStack = new List<Vector>
         {
-            Vector.South,
             Vector.North,
+            Vector.South,
             Vector.West,
             Vector.East
         };

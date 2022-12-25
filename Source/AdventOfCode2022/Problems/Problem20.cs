@@ -25,36 +25,43 @@ public class Problem20 : ProblemBase
 
     internal static long SolvePartOne(ICollection<string> input)
     {
-        var file = input.AsLong().Select(val => new Number(val)).ToList();
+        var originalFile = input.AsLong().Select(val => new Number(val)).ToList();
+        var file = originalFile.Select(x => x).ToList();
 
-        file = ReOrderFile(file);
+        ReOrderFile(originalFile, file);
 
         return FindCoordinates(file).Sum();
     }
 
-    private static List<Number> ReOrderFile(IList<Number> file)
+    internal static long SolvePartTwo(ICollection<string> input)
     {
-        // Create a copy of the file.
-        var result = file.ToList();
+        var originalFile = input.AsLong().Select(val => new Number(val * 811589153L)).ToList();
+        var file = originalFile.Select(x => x).ToList();
 
-        // Go through each original number and move it.
-        for (var i = 0; i < result.Count; i++)
+        for (var i = 0; i < 10; i++)
         {
-            var number = file[i];
+            ReOrderFile(originalFile, file);
+        }
 
-            var oldIndex = result.IndexOf(number);
-            var newIndex = (int)((oldIndex + number.Value) % (result.Count - 1));
+        return FindCoordinates(file).Sum();
+    }
+
+    private static void ReOrderFile(IEnumerable<Number> originalFile, IList<Number> file)
+    {
+        // Go through each original number and move it.
+        foreach (var number in originalFile)
+        {
+            var oldIndex = file.IndexOf(number);
+            var newIndex = (int)((oldIndex + number.Value) % (file.Count - 1));
 
             if (newIndex <= 0)
             {
-                newIndex = result.Count - 1 + newIndex;
+                newIndex = file.Count - 1 + newIndex;
             }
 
-            result.RemoveAt(oldIndex);
-            result.Insert(newIndex, number);
+            file.RemoveAt(oldIndex);
+            file.Insert(newIndex, number);
         }
-
-        return result;
     }
 
     private static IEnumerable<long> FindCoordinates(IList<Number> file)
@@ -69,11 +76,6 @@ public class Problem20 : ProblemBase
         result[2] = file[(3000 + offset) % file.Count].Value;
 
         return result;
-    }
-
-    internal static long SolvePartTwo(ICollection<string> input)
-    {
-        return 0;
     }
 
     /// <summary>
@@ -94,5 +96,11 @@ public class Problem20 : ProblemBase
         /// The actual value of this <see cref="Number"/>.
         /// </summary>
         public long Value { get; }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }
