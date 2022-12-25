@@ -8,13 +8,18 @@ public class Problem24Tests
 {
     private readonly string[] _testInput =
     {
-
+        "#.######",
+        "#>>.<^<#",
+        "#.<..<<#",
+        "#>v.><>#",
+        "#<^v^^>#",
+        "######.#"
     };
 
     [Test]
     public void TestPartOne()
     {
-        Assert.AreEqual(-1, Problem24.SolvePartOne(_testInput));
+        Assert.AreEqual(18, Problem24.SolvePartOne(_testInput));
     }
 
     [Test]

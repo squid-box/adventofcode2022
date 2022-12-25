@@ -31,5 +31,5 @@ The .exe will download the input of the requested day if it's missing.
 | [21](https://adventofcode.com/2022/day/21) | Monkey Math              |               |
 | [22](https://adventofcode.com/2022/day/22) | Monkey Map               |               |
 | [23](https://adventofcode.com/2022/day/23) | Unstable Diffusion       | :star: :star: |
-| [24](https://adventofcode.com/2022/day/24) | Unknown                  |               |
-| [25](https://adventofcode.com/2022/day/25) | Unknown                  |               |
+| [24](https://adventofcode.com/2022/day/24) | Blizzard Basin           |               |
+| [25](https://adventofcode.com/2022/day/25) | Full of Hot Air          | :star:        |
